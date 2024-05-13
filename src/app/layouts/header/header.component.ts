@@ -24,7 +24,6 @@ import { TitleCasePipe } from '@angular/common';
 })
 export class HeaderComponent {
 	searching: boolean = false;
-	navLinks: string[] = ['home', 'users'];
 	options: string[] = ['One', 'Two', 'Three'];
 
 	onSearchSubmit(searchValue: string) {
