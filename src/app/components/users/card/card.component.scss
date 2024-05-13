@@ -1,4 +1,34 @@
-.card {
-    height: 320px;
-    width: 240px;
+.actions {
+    position: absolute; 
+    top: 12.5%;
+    right: 4px;
+
+    button {
+        background-color: var(--primary-color);
+        color: var(--accent-color);
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        transition-duration: 0.25s;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
+@media ( max-width: 500px ) {
+    .card {
+        width: 100%;
+        min-width: none;
+        
+        .actions {
+            position: static;
+    
+            button {
+                width: 100%;
+            }
+        }
+    }
 }

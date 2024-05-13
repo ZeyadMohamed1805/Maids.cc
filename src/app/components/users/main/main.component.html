@@ -1,7 +1,7 @@
 <section class="main">
 	<div class="cards-container">
-		@for(user of response?.data; track user._id) {
-		<app-card />
+		@for(user of response?.data; track user.id) {
+		<app-card [user]="user" />
 		} @empty {
 		<div class="searching">
 			{{ searching ? "Loading..." : "Not Found..." }}

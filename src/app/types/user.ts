@@ -1,9 +1,9 @@
 export type TUser = {
-	_id: number;
-	_email: string;
-	_first_name: string;
-	_last_name: string;
-	_avatar: string;
+	id: number;
+	email: string;
+	first_name: string;
+	last_name: string;
+	avatar: string;
 };
 
 export type TUserResponse = {

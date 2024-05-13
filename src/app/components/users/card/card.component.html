@@ -1,3 +1,21 @@
-<div class="card">
-	<p>card works!</p>
-</div>
+@if (user) {
+<mat-card class="card" [id]="user.id">
+	<mat-card-header class="header">
+		<img [src]="user.avatar" [alt]="user.first_name" mat-card-avatar />
+		<mat-card-title>
+			<span>{{ user.first_name }}</span>
+		</mat-card-title>
+		<mat-card-subtitle>
+			<span>
+				{{ user.email }}
+			</span>
+		</mat-card-subtitle>
+	</mat-card-header>
+	<mat-card-actions class="actions">
+		<button>View Details</button>
+	</mat-card-actions>
+</mat-card>
+}
+<!-- @else {
+	<app-loading-card />
+	} -->
