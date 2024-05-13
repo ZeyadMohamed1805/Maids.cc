@@ -1,1 +1,48 @@
-<p>footer works!</p>
+<footer>
+	<div class="container">
+		<div class="content">
+			<img src="../../../assets/images/logo.svg" alt="Logo" />
+			<ul class="nav-list">
+				<li>Pages</li>
+				<mat-divider class="divider" />
+				<div class="nav-items">
+					@for( footerLink of footerLinks; track footerLink ) {
+					<li>
+						<a [routerLink]="footerLink">{{
+							footerLink | titlecase
+						}}</a>
+					</li>
+					}
+				</div>
+			</ul>
+			<input
+				type="search"
+				placeholder="Search"
+				aria-label="Number"
+				class="main-search"
+				(input)="onSearchChange(productNameSearch.value)"
+				#productNameSearch
+				(keydown.enter)="onSearchSubmit(productNameSearch.value)"
+				matInput
+				[matAutocomplete]="auto"
+			/>
+			<mat-autocomplete #auto="matAutocomplete">
+				@for (option of options; track option;) {
+				<mat-option [value]="option">
+					<span>{{ option }}</span>
+				</mat-option>
+				} @empty {
+				<mat-option
+					><span>{{
+						searching ? "Loading..." : "Not Found..."
+					}}</span></mat-option
+				>
+				}
+			</mat-autocomplete>
+		</div>
+		<mat-divider class="divider" />
+		<div class="copyrights">
+			<p>Copyright - Zeyad Mohamed</p>
+		</div>
+	</div>
+</footer>
