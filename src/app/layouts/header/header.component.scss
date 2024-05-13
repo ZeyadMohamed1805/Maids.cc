@@ -5,7 +5,7 @@ header {
     padding: 24px 40px;
     display: flex;
     align-items: center;
-    position: fixed;
+    position: sticky;
     box-shadow: 0 0 5px var(--black-color);
     top: 0;
     z-index: 999;
