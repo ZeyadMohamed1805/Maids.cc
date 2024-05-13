@@ -19,9 +19,7 @@ export class MainComponent implements OnInit {
 	constructor(private userService: UserService) {}
 
 	ngOnInit(): void {
-		setTimeout(() => {
-			this.getUsers(1);
-		}, 5000);
+		this.getUsers(1);
 	}
 
 	onPageClick(event: any): void {
