@@ -9,6 +9,7 @@ import {
 	MatCardTitle,
 } from '@angular/material/card';
 import { User } from '../../../models/user';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-card',
@@ -27,4 +28,10 @@ import { User } from '../../../models/user';
 })
 export class CardComponent {
 	@Input() user: User | null = null;
+
+	constructor(private router: Router) {}
+
+	onViewDetailsClick(): void {
+		this.router.navigateByUrl(`/users/${this.user!.id}`);
+	}
 }
