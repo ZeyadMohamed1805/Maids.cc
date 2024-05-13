@@ -1,24 +1,17 @@
 <section class="main">
 	<div class="cards-container">
+		@for(user of response?.data; track user._id) {
 		<app-card />
-		<app-card />
-		<app-card />
-		<app-card />
-		<app-card />
-		<app-card />
+		} @empty {
+		<div class="searching">
+			{{ searching ? "Loading..." : "Not Found..." }}
+		</div>
+		}
 	</div>
-	<!-- @for() {
-    
-    }  -->
-	<!-- @empty { -->
-	<!-- <div class="searching">
-		{{ searching ? "Loading..." : "Not Found..." }}
-	</div> -->
-	<!-- } -->
 	<div class="paginator-container">
 		<mat-paginator
-			[length]="12"
-			[pageSize]="6"
+			[length]="response?.total"
+			[pageSize]="response?.per_page"
 			(page)="onPageClick($event)"
 		>
 		</mat-paginator>
