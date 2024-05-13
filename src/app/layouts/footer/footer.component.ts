@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MatDivider } from '@angular/material/divider';
 import {
 	MatAutocomplete,
@@ -14,6 +15,7 @@ import { TitleCasePipe } from '@angular/common';
 	imports: [
 		TitleCasePipe,
 		RouterLink,
+		RouterTestingModule,
 		MatDivider,
 		MatAutocomplete,
 		MatAutocompleteTrigger,
