@@ -1,9 +1,10 @@
 .main {
-    min-height: calc(100vh - 120px);
+    min-height: calc(100vh - 340px);
     width: 100%;
     padding: 24px 40px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     gap: 32px;
 
