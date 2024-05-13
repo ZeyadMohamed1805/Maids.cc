@@ -1,0 +1,20 @@
+.return {
+    width: 100%;
+    padding: 24px 40px;
+
+    button {
+        background-color: var(--primary-color);
+        color: var(--accent-color);
+        font-weight: 500;
+        border: none;
+        font-size: 16px;
+        border-radius: 8px;
+        padding: 16px 32px;
+        transition-duration: 0.25s;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
