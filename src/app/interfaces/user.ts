@@ -1,7 +1,7 @@
-import { TUser, TUserResponse } from '../types/user';
+import { TUser, TUserDetailsResponse, TUserResponse } from '../types/user';
 import { Observable } from 'rxjs';
 
 export interface IUserService {
 	getUsersPage(page: number): Observable<TUserResponse>;
-	getUserDetails(id: number): Observable<TUser>;
+	getUserDetails(id: number): Observable<TUserDetailsResponse>;
 }

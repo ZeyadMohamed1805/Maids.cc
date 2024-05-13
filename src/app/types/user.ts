@@ -13,3 +13,7 @@ export type TUserResponse = {
 	total: number;
 	total_pages: number;
 };
+
+export type TUserDetailsResponse = {
+	data: TUser;
+};

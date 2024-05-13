@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { IUserService } from '../../interfaces/user';
-import { TUser, TUserResponse } from '../../types/user';
+import { TUser, TUserDetailsResponse, TUserResponse } from '../../types/user';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class UserService implements IUserService {
 		return this.apiService.get<TUserResponse>(`/users?page=${page}`);
 	}
 
-	getUserDetails(id: number): Observable<TUser> {
-		return this.apiService.get<TUser>(`users/${id}`);
+	getUserDetails(id: number): Observable<TUserDetailsResponse> {
+		return this.apiService.get<TUserDetailsResponse>(`/users/${id}`);
 	}
 }
