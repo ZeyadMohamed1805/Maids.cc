@@ -1,1 +1,36 @@
-<p>header works!</p>
+<header>
+	<nav>
+		<img id="logo" src="../../../assets/images/logo.svg" alt="Logo" />
+		<input
+			type="search"
+			placeholder="Search"
+			aria-label="Number"
+			class="main-search"
+			(input)="onSearchChange(productNameSearch.value)"
+			#productNameSearch
+			(keydown.enter)="onSearchSubmit(productNameSearch.value)"
+			matInput
+			[matAutocomplete]="auto"
+		/>
+		<mat-autocomplete #auto="matAutocomplete">
+			@for (option of options; track option;) {
+			<mat-option [value]="option">
+				<span>{{ option }}</span>
+			</mat-option>
+			} @empty {
+			<mat-option
+				><span>{{
+					searching ? "Loading..." : "Not Found..."
+				}}</span></mat-option
+			>
+			}
+		</mat-autocomplete>
+		<!-- <ul class="nav-list">
+			@for( navLink of navLinks; track navLink ) {
+			<li>
+				<a [routerLink]="navLink">{{ navLink | titlecase }}</a>
+			</li>
+			}
+		</ul> -->
+	</nav>
+</header>
