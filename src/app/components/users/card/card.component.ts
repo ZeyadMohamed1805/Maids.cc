@@ -9,6 +9,7 @@ import {
 	MatCardTitle,
 } from '@angular/material/card';
 import { User } from '../../../models/user';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
 	selector: 'app-card',

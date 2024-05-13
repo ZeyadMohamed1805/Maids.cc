@@ -3,9 +3,12 @@
 		@for(user of response?.data; track user.id) {
 		<app-card [user]="user" />
 		} @empty {
-		<div class="searching">
-			{{ searching ? "Loading..." : "Not Found..." }}
-		</div>
+		<app-loading />
+		<app-loading />
+		<app-loading />
+		<app-loading />
+		<app-loading />
+		<app-loading />
 		}
 	</div>
 	<div class="paginator-container">
