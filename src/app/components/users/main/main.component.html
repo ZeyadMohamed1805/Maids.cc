@@ -1,1 +1,18 @@
-<p>main works!</p>
+<section class="main">
+	<!-- @for() {
+    
+    }  -->
+	<!-- @empty { -->
+	<div class="searching">
+		{{ searching ? "Loading..." : "Not Found..." }}
+	</div>
+	<!-- } -->
+	<div class="paginator-container">
+		<mat-paginator
+			[length]="12"
+			[pageSize]="6"
+			(page)="onPageClick($event)"
+		>
+		</mat-paginator>
+	</div>
+</section>
