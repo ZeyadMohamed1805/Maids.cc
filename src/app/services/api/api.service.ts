@@ -6,9 +6,11 @@ import { Observable } from 'rxjs';
 	providedIn: 'root',
 })
 export class ApiService {
+	private baseUrl: string = 'https://reqres.in/api';
+
 	constructor(private http: HttpClient) {}
 
 	get<T>(endPoint: string): Observable<T> {
-		return this.http.get<T>(`${process.env.BASE_URL}${endPoint}`);
+		return this.http.get<T>(`${this.baseUrl}${endPoint}`);
 	}
 }
