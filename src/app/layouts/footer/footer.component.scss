@@ -15,45 +15,14 @@ footer {
 
         .content {
             width: 100%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
             gap: 32px;
 
             img {
                 width: 160px;
-            }
-
-            ul {
-                list-style: none;
-                grid-column: 2 / 4;
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-
-                .nav-items {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                }
-    
-                li { 
-                    color: var(--accent-color);
-                    font-size: 16px;
-
-                    a, button {
-                        text-decoration: none;
-                        border: none;
-                        background-color: transparent;
-                        color: var(--accent-color);
-                        border-bottom: solid 2px transparent;
-                        transition-duration: 0.25s;
-                        font-size: 16px;
-                        cursor: pointer;
-        
-                        &:hover {
-                            border-bottom: solid 2px var(--primary-color);
-                        }
-                    }
-                }
             }
 
             input {
@@ -86,36 +55,13 @@ footer {
     }
 }
 
-@media ( max-width: 1000px ) {
+@media (max-width: 700px) {
     footer .container .content {
-        grid-template-columns: repeat(2, 1fr);
-
-        ul {
-            grid-row:  2 / 3;
-            grid-column:  1 / 3;
-
-            .nav-items {
-                gap: 32px;
-            }
-        }
-    }
-}
-
-@media ( max-width: 500px ) {
-    footer .container .content {
-        img {
-            justify-self: center;
-            grid-column: 1 / 3;
-            grid-row: 1 / 2;
-        }
+        flex-direction: column;
+        justify-content: center;
 
         input {
-            grid-column: 1 / 3;
-            grid-row: 2 / 3;
-        }
-
-        ul {
-            grid-row: 3 / 4;
+            max-width: none;
         }
     }
 }

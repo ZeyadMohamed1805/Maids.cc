@@ -2,19 +2,6 @@
 	<div class="container">
 		<div class="content">
 			<img src="../../../assets/images/logo.svg" alt="Logo" />
-			<ul class="nav-list">
-				<li>Pages</li>
-				<mat-divider class="divider" />
-				<div class="nav-items">
-					@for( footerLink of footerLinks; track footerLink ) {
-					<li>
-						<a [routerLink]="footerLink">{{
-							footerLink | titlecase
-						}}</a>
-					</li>
-					}
-				</div>
-			</ul>
 			<input
 				type="search"
 				placeholder="Search"
