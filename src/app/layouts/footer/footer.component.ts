@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { MatDivider } from '@angular/material/divider';
 import { TitleCasePipe } from '@angular/common';
+import { SearchService } from '../../services/search/search.service';
 
 @Component({
 	selector: 'app-footer',
@@ -13,9 +14,5 @@ import { TitleCasePipe } from '@angular/common';
 export class FooterComponent {
 	footerLinks: string[] = ['home', 'users'];
 
-	constructor(private router: Router) {}
-
-	onSearchSubmit(searchValue: string) {
-		this.router.navigateByUrl(`/users/${searchValue}`);
-	}
+	constructor(public searchService: SearchService) {}
 }

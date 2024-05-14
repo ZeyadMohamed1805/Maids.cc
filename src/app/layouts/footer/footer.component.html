@@ -21,7 +21,7 @@
 				aria-label="Number"
 				class="main-search"
 				#userSearch
-				(keydown.enter)="onSearchSubmit(userSearch.value)"
+				(keydown.enter)="searchService.onSearchSubmit(userSearch.value)"
 				matInput
 			/>
 		</div>

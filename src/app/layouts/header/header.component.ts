@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { SearchService } from '../../services/search/search.service';
 
 @Component({
 	selector: 'app-header',
@@ -9,9 +9,5 @@ import { Router } from '@angular/router';
 	styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-	constructor(private router: Router) {}
-
-	onSearchSubmit(searchValue: string) {
-		this.router.navigateByUrl(`/users/${searchValue}`);
-	}
+	constructor(public searchService: SearchService) {}
 }
