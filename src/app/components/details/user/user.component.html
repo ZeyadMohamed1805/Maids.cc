@@ -1,1 +1,32 @@
-<p>user works!</p>
+@if(user) {
+<div class="user">
+	<img [src]="user.avatar" [alt]="user.first_name" />
+	<mat-divider />
+	<ul>
+		<li>
+			<h4>First Name:</h4>
+			<p>
+				<span>
+					{{ user.first_name }}
+				</span>
+			</p>
+		</li>
+		<li>
+			<h4>Last Name:</h4>
+			<p>
+				<span>
+					{{ user.last_name }}
+				</span>
+			</p>
+		</li>
+		<li>
+			<h4>Email:</h4>
+			<p>
+				<span>
+					{{ user.email }}
+				</span>
+			</p>
+		</li>
+	</ul>
+</div>
+}
