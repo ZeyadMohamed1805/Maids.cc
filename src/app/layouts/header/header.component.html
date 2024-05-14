@@ -6,9 +6,8 @@
 			placeholder="Search"
 			aria-label="Number"
 			class="main-search"
-			(input)="onSearchChange(productNameSearch.value)"
-			#productNameSearch
-			(keydown.enter)="onSearchSubmit(productNameSearch.value)"
+			#userSearch
+			(keydown.enter)="onSearchSubmit(userSearch.value)"
 			matInput
 			[matAutocomplete]="auto"
 		/>

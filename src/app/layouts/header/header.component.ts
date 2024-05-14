@@ -5,7 +5,7 @@ import {
 	MatAutocompleteTrigger,
 	MatOption,
 } from '@angular/material/autocomplete';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 
 @Component({
@@ -26,10 +26,9 @@ export class HeaderComponent {
 	searching: boolean = false;
 	options: string[] = ['One', 'Two', 'Three'];
 
+	constructor(private router: Router) {}
+
 	onSearchSubmit(searchValue: string) {
-		console.log(searchValue);
-	}
-	onSearchChange(searchValue: string) {
-		console.log(searchValue);
+		this.router.navigateByUrl(`/users/${searchValue}`);
 	}
 }
