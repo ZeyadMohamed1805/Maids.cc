@@ -3,11 +3,12 @@ import { UserService } from '../../../services/user/user.service';
 import { TUser } from '../../../types/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatDivider } from '@angular/material/divider';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
 	selector: 'app-user',
 	standalone: true,
-	imports: [MatDivider],
+	imports: [MatDivider, LoadingComponent],
 	templateUrl: './user.component.html',
 	styleUrl: './user.component.scss',
 })
