@@ -9,6 +9,7 @@ export class SearchService implements ISearchService {
 	constructor(private router: Router) {}
 
 	onSearchSubmit(searchValue: string) {
-		this.router.navigateByUrl(`/users/${searchValue}`);
+		if (searchValue.length)
+			this.router.navigateByUrl(`/users/${searchValue}`);
 	}
 }
