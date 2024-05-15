@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
 import { TUser } from '../../../types/user';
 import { ActivatedRoute } from '@angular/router';
 import { MatDivider } from '@angular/material/divider';
 import { LoadingComponent } from '../loading/loading.component';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-user',
@@ -12,8 +13,9 @@ import { LoadingComponent } from '../loading/loading.component';
 	templateUrl: './user.component.html',
 	styleUrl: './user.component.scss',
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
 	user: TUser | null = null;
+	subscriptions: Subscription = new Subscription();
 
 	constructor(
 		private userService: UserService,
@@ -25,14 +27,24 @@ export class UserComponent implements OnInit {
 	}
 
 	getUser(id: number): void {
-		this.userService.getUserDetails(id).subscribe((response) => {
-			this.user = response.data;
-		});
+		const subscription = this.userService
+			.getUserDetails(id)
+			.subscribe((response) => {
+				this.user = response.data;
+			});
+
+		this.subscriptions.add(subscription);
 	}
 
 	getUserIdFromParams(): void {
-		this.activatedRoute.params.subscribe((params) => {
+		const subscription = this.activatedRoute.params.subscribe((params) => {
 			this.getUser(params['id']);
 		});
+
+		this.subscriptions.add(subscription);
+	}
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe();
 	}
 }

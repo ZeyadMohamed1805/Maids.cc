@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { CardComponent } from '../card/card.component';
 import { UserService } from '../../../services/user/user.service';
 import { TUserResponse } from '../../../types/user';
 import { LoadingComponent } from '../loading/loading.component';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-main',
@@ -12,9 +13,10 @@ import { LoadingComponent } from '../loading/loading.component';
 	templateUrl: './main.component.html',
 	styleUrl: './main.component.scss',
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
 	loading: boolean = true;
 	response: TUserResponse | null = null;
+	subscriptions: Subscription = new Subscription();
 
 	constructor(private userService: UserService) {}
 
@@ -28,11 +30,21 @@ export class MainComponent implements OnInit {
 
 	getUsers(page: number): void {
 		this.loading = true;
-		this.userService.getUsersPage(page).subscribe((response) => {
-			console.log(response);
 
-			this.response = response;
-		});
+		const subscription = this.userService
+			.getUsersPage(page)
+			.subscribe((response) => {
+				console.log(response);
+
+				this.response = response;
+			});
+
+		this.subscriptions.add(subscription);
+
 		this.loading = false;
+	}
+
+	ngOnDestroy(): void {
+		this.subscriptions.unsubscribe();
 	}
 }
