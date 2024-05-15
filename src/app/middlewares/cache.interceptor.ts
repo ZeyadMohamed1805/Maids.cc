@@ -6,10 +6,13 @@ export const cacheInterceptor = (
 	request: HttpRequest<any>,
 	next: HttpHandlerFn
 ) => {
+	const baseUrl: string = 'https://reqres.in/api';
+	const url = request.url.replace(baseUrl, '');
+
 	return next(request).pipe(
 		tap((response) => {
 			if (response instanceof HttpResponse) {
-				localStorage.setItem(request.url, JSON.stringify(response));
+				localStorage.setItem(url, JSON.stringify(response.body));
 			}
 			return response;
 		}),

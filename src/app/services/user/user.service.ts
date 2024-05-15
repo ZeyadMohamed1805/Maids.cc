@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { IUserService } from '../../interfaces/user';
-import { TUser, TUserDetailsResponse, TUserResponse } from '../../types/user';
+import { TUserDetailsResponse, TUserResponse } from '../../types/user';
 import { Observable } from 'rxjs';
 
 @Injectable({

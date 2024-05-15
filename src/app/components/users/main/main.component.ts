@@ -29,6 +29,8 @@ export class MainComponent implements OnInit {
 	getUsers(page: number): void {
 		this.loading = true;
 		this.userService.getUsersPage(page).subscribe((response) => {
+			console.log(response);
+
 			this.response = response;
 		});
 		this.loading = false;
