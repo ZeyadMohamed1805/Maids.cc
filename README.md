@@ -11,4 +11,4 @@ This project was created as an attempt for an Angular Frontend interview at Maid
 - Error Handling
 - Unit Tests using Jest
 - Angular Material with Custom Theme
-- Vercel Deployment
+- Vercel Deployment: https://maids-cc-project.vercel.app
