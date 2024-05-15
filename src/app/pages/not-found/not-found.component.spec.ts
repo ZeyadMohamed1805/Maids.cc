@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found.component';
-import { ActivatedRoute, Router } from '@angular/router';
 
 describe('NotFoundComponent', () => {
 	let component: NotFoundComponent;
