@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
 	selector: 'app-not-found',
@@ -11,14 +11,17 @@ import { ActivatedRoute } from '@angular/router';
 export class NotFoundComponent implements OnInit {
 	message: string | null = null;
 
-	constructor(private activatedRoute: ActivatedRoute) {}
+	constructor(
+		private activatedRoute: ActivatedRoute,
+		private router: Router
+	) {}
 
 	ngOnInit(): void {
 		this.setMessage(this.getUserParam());
 	}
 
 	getUserParam(): string | undefined {
-		return this.activatedRoute.snapshot.params['users'];
+		return this.activatedRoute.snapshot.queryParams['user'];
 	}
 
 	setMessage(userParam: string | undefined): void {
@@ -26,5 +29,9 @@ export class NotFoundComponent implements OnInit {
 		else {
 			this.message = 'The Page You Are Requesting Does Not Exist';
 		}
+	}
+
+	onGoHomeClick() {
+		this.router.navigateByUrl('users');
 	}
 }

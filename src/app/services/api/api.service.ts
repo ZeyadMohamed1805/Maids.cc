@@ -13,7 +13,6 @@ export class ApiService {
 
 	get<T>(endPoint: string): Observable<T> {
 		const cacheResponse = this.cacheService.getCachedItem<T>(endPoint);
-		console.log(cacheResponse);
 		if (cacheResponse) return of(cacheResponse);
 		return this.http.get<T>(`${this.baseUrl}${endPoint}`);
 	}

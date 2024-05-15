@@ -5,6 +5,7 @@ import { UserService } from '../../../services/user/user.service';
 import { TUserResponse } from '../../../types/user';
 import { LoadingComponent } from '../loading/loading.component';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-main',
@@ -18,7 +19,7 @@ export class MainComponent implements OnInit, OnDestroy {
 	response: TUserResponse | null = null;
 	subscriptions: Subscription = new Subscription();
 
-	constructor(private userService: UserService) {}
+	constructor(private userService: UserService, private router: Router) {}
 
 	ngOnInit(): void {
 		this.getUsers(1);
@@ -31,13 +32,14 @@ export class MainComponent implements OnInit, OnDestroy {
 	getUsers(page: number): void {
 		this.loading = true;
 
-		const subscription = this.userService
-			.getUsersPage(page)
-			.subscribe((response) => {
-				console.log(response);
-
+		const subscription = this.userService.getUsersPage(page).subscribe({
+			next: (response) => {
 				this.response = response;
-			});
+			},
+			error: () => {
+				this.router.navigateByUrl(`not-found`);
+			},
+		});
 
 		this.subscriptions.add(subscription);
 

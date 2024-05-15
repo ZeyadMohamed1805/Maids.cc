@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user/user.service';
 import { TUser } from '../../../types/user';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDivider } from '@angular/material/divider';
 import { LoadingComponent } from '../loading/loading.component';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,8 @@ export class UserComponent implements OnInit, OnDestroy {
 
 	constructor(
 		private userService: UserService,
-		private activatedRoute: ActivatedRoute
+		private activatedRoute: ActivatedRoute,
+		private router: Router
 	) {}
 
 	ngOnInit(): void {
@@ -27,11 +28,14 @@ export class UserComponent implements OnInit, OnDestroy {
 	}
 
 	getUser(id: number): void {
-		const subscription = this.userService
-			.getUserDetails(id)
-			.subscribe((response) => {
+		const subscription = this.userService.getUserDetails(id).subscribe({
+			next: (response) => {
 				this.user = response.data;
-			});
+			},
+			error: () => {
+				this.router.navigateByUrl(`not-found?user=${id}`);
+			},
+		});
 
 		this.subscriptions.add(subscription);
 	}
